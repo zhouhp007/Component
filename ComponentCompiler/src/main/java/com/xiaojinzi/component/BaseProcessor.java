@@ -41,17 +41,8 @@ public abstract class BaseProcessor extends AbstractProcessor {
 
     /*当没有依赖实现库的异常*/
     public static final RuntimeException IMPL_NOT_BE_DEPENDENT_ON = new RuntimeException(
-            "Did your module depend on component-impl or component-impl-rx? \n" +
-                    "if your project is androidx, please config \n" +
-                    "api 'com.github.xiaojinzi123.Component:component-impl:<version>-androidx' \n" +
-                    "or\n" +
-                    "api 'com.github.xiaojinzi123.Component:component-impl-rx:<version>-androidx' \n" +
-                    "Otherwise, config \n" +
-                    "api 'com.github.xiaojinzi123.Component:component-impl:<version>' \n" +
-                    "or\n" +
-                    "api 'com.github.xiaojinzi123.Component:component-impl-rx:<version>' \n" +
-                    "<version> is the last version of Component, don't forget to replace" +
-                    "see https://github.com/xiaojinzi123/Component/releases"
+            "Did your module depend on component-impl or component-impl-rx or ? component-impl-ktx \n" +
+                    "see https://github.com/xiaojinzi123/Component/wiki/%E4%BE%9D%E8%B5%96%E5%92%8C%E9%85%8D%E7%BD%AE"
     );
 
     protected String routerDocFolder = null;
