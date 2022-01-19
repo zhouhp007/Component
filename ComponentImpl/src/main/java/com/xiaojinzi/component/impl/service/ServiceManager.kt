@@ -31,7 +31,8 @@ object ServiceManager {
     /**
      * Service 装饰者的集合. 线程不安全的
      */
-    private val serviceDecoratorMap: MutableMap<Class<*>, HashMap<String, DecoratorCallable<*>>> = mutableMapOf()
+    private val serviceDecoratorMap: MutableMap<Class<*>, HashMap<String, DecoratorCallable<*>>> =
+        mutableMapOf()
 
     private val uniqueServiceSet: MutableSet<String> = HashSet()
 
@@ -44,7 +45,6 @@ object ServiceManager {
      * 注册自动注册的 Service Class
      */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> registerAutoInit(tClass: Class<T>) {
         registerAutoInit(tClass, null)
@@ -54,7 +54,6 @@ object ServiceManager {
      * 注册自动注册的 Service Class
      */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> registerAutoInit(tClass: Class<T>, name: String?) {
         Utils.checkNullPointer(tClass, "tClass")
@@ -65,7 +64,6 @@ object ServiceManager {
      * 反注册自动注册的 Service Class
      */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> unregisterAutoInit(tClass: Class<T>) {
         Utils.checkNullPointer(tClass, "tClass")
@@ -76,7 +74,6 @@ object ServiceManager {
      *
      * 初始化那些需要自动初始化的 Service
      */
-    @JvmStatic
     @WorkerThread
     @NotAppUseAnno
     fun autoInitService() {
@@ -99,11 +96,12 @@ object ServiceManager {
      * @param <T>      装饰目标
     </T> */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
-    fun <T> registerDecorator(tClass: Class<T>,
-                              uid: String,
-                              callable: DecoratorCallable<out T>) {
+    fun <T> registerDecorator(
+        tClass: Class<T>,
+        uid: String,
+        callable: DecoratorCallable<out T>
+    ) {
         Utils.checkNullPointer(tClass, "tClass")
         Utils.checkNullPointer(uid, "uid")
         Utils.checkNullPointer(callable, "callable")
@@ -128,7 +126,6 @@ object ServiceManager {
      * @param <T>    装饰目标
     </T> */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> unregisterDecorator(tClass: Class<T>, uid: String) {
         Utils.checkNullPointer(tClass, "tClass")
@@ -140,7 +137,6 @@ object ServiceManager {
     }
 
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> register(tClass: Class<T>, callable: Callable<out T>) {
         register(tClass, DEFAULT_NAME, callable)
@@ -152,7 +148,6 @@ object ServiceManager {
      * [.get] 方法内部才会初始化目标 Service
      */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> register(tClass: Class<T>, name: String, callable: Callable<out T>) {
         Utils.checkNullPointer(tClass, "tClass")
@@ -172,14 +167,12 @@ object ServiceManager {
     }
 
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> unregister(tClass: Class<T>) {
         unregister(tClass, DEFAULT_NAME)
     }
 
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> unregister(tClass: Class<T>, name: String) {
         Utils.checkNullPointer(tClass, "tClass")
@@ -205,7 +198,6 @@ object ServiceManager {
      * @return 返回一个增强的目标对象的装饰者
      */
     @AnyThread
-    @JvmStatic
     @NotAppUseAnno
     fun <T> decorate(tClass: Class<T>, target: T): T {
         Utils.checkNullPointer(tClass, "tClass")
@@ -238,7 +230,6 @@ object ServiceManager {
      * @return 目标对象的实例对象
     </T> */
     @AnyThread
-    @JvmStatic
     @JvmOverloads
     fun <T> get(tClass: Class<T>, name: String = DEFAULT_NAME): T? {
         Utils.checkNullPointer(tClass, "tClass")
@@ -249,18 +240,23 @@ object ServiceManager {
                 throw ServiceRepeatCreateException("className is " + tClass.name + ", serviceName is '" + name + "'")
             }
             uniqueServiceSet.add(uniqueName)
-            var result: T? = null
-            val implServiceMap = serviceMap[tClass]
-            if (implServiceMap != null) {
-                val callable = implServiceMap[name]
-                if (callable != null) {
-                    // 如果没创建, 这时候会创建了目标 service 对象
-                    val t = Utils.checkNullPointer(callable.get()) as T
-                    result = decorate(tClass, t)
+            try {
+                var result: T? = null
+                val implServiceMap = serviceMap[tClass]
+                if (implServiceMap != null) {
+                    val callable = implServiceMap[name]
+                    if (callable != null) {
+                        // 如果没创建, 这时候会创建了目标 service 对象
+                        val t = Utils.checkNullPointer(callable.get()) as T
+                        result = decorate(tClass, t)
+                    }
                 }
+                uniqueServiceSet.remove(uniqueName)
+                return result
+            } catch (e: Exception) {
+                uniqueServiceSet.remove(uniqueName)
+                throw e
             }
-            uniqueServiceSet.remove(uniqueName)
-            return result
         }
     }
 
@@ -269,7 +265,6 @@ object ServiceManager {
      * @see .get
      */
     @AnyThread
-    @JvmStatic
     fun <T> requiredGet(tClass: Class<T>): T {
         return requiredGet(tClass, DEFAULT_NAME)
     }
@@ -279,7 +274,6 @@ object ServiceManager {
      * @see .get
      */
     @AnyThread
-    @JvmStatic
     fun <T> requiredGet(tClass: Class<T>, name: String): T {
         return Utils.checkNullPointer(get(tClass, name))
     }
