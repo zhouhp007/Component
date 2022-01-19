@@ -27,19 +27,22 @@ object OpenOnceInterceptor : RouterInterceptor {
     override fun intercept(chain: RouterInterceptor.Chain) {
         val uri = chain.request().uri
         val hostAndPath = StringBuffer()
-                .append(uri.host)
-                .append("/").append(uri.path)
-                .toString()
+            .append(uri.host)
+            // .append("/")
+            .append(uri.path)
+            .toString()
         // 调试的情况下可能会失效,因为你断点打到这里慢慢的往下走那么可能时间已经过了一秒,就失去了限制的作用
         val currentTime = System.currentTimeMillis()
         // 如果之前有了并且时间少于一定的时间
         if (map.containsKey(hostAndPath) && currentTime - map[hostAndPath]!! < requiredConfig().routeRepeatCheckDuration) {
-            chain.callback().onError(NavigationFailException("same request can't launch twice in a second, target uri is：$uri"))
+            chain.callback()
+                .onError(NavigationFailException("same request can't launch twice in a second, target uri is：$uri"))
         } else {
             map[hostAndPath] = currentTime
             // 放过执行
             chain.proceed(chain.request())
         }
+        // 清理过期的
         cleanOverdue()
     }
 
