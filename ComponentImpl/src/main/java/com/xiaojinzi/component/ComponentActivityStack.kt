@@ -16,6 +16,55 @@ object ComponentActivityStack {
     private val activityStack: Stack<Activity> = Stack()
 
     /**
+     * 是否是空的
+     */
+    val isEmpty: Boolean
+        @Synchronized
+        get() = activityStack.isEmpty()
+
+    /**
+     * 返回顶层的 Activity
+     */
+    val topActivity: Activity?
+        @Synchronized
+        get() = if (isEmpty) null else activityStack[activityStack.lastIndex]
+
+    /**
+     * 返回顶层第二个的 Activity
+     */
+    val secondTopActivity: Activity?
+        @Synchronized
+        get() = if (isEmpty || activityStack.size < 2) null else activityStack[activityStack.lastIndex - 1]
+
+    /**
+     * 返回底层的 Activity
+     */
+    val bottomActivity: Activity?
+        @Synchronized
+        get() = if (isEmpty || activityStack.size < 1) null else activityStack[0]
+
+    /**
+     * 返回顶层的活着的 Activity
+     */
+    val topAliveActivity: Activity?
+        @Synchronized
+        get() {
+            var result: Activity? = null
+            if (!isEmpty) {
+                val size = activityStack.size
+                for (i in size - 1 downTo 0) {
+                    val activity = activityStack[i]
+                    // 如果已经销毁, 就下一个
+                    if (!Utils.isActivityDestoryed(activity)) {
+                        result = activity
+                        break
+                    }
+                }
+            }
+            return result
+        }
+
+    /**
      * 进入栈
      */
     @Synchronized
@@ -37,42 +86,6 @@ object ComponentActivityStack {
     }
 
     /**
-     * @return whether the the size of stack of Activity is zero or not
-     */
-    @Synchronized
-    fun isEmpty(): Boolean {
-        return activityStack.isEmpty()
-    }
-
-    /**
-     * 返回顶层的 Activity
-     */
-    @Synchronized
-    fun getTopActivity(): Activity? {
-        return if (isEmpty()) null else activityStack[activityStack.lastIndex]// 如果已经销毁, 就下一个
-    }
-
-    /**
-     * 返回顶层的活着的 Activity
-     */
-    @Synchronized
-    fun getTopAliveActivity(): Activity? {
-        var result: Activity? = null
-        if (!isEmpty()) {
-            val size = activityStack.size
-            for (i in size - 1 downTo 0) {
-                val activity = activityStack[i]
-                // 如果已经销毁, 就下一个
-                if (!Utils.isActivityDestoryed(activity)) {
-                    result = activity
-                    break
-                }
-            }
-        }
-        return result
-    }
-
-    /**
      * 返回顶层的 Activity除了某一个
      */
     @Synchronized
@@ -87,21 +100,6 @@ object ComponentActivityStack {
         return null
     }
 
-    /**
-     * 返回顶层的第二个 Activity
-     */
-    @Synchronized
-    fun getSecondTopActivity(): Activity? {
-        return if (isEmpty() || activityStack.size < 2) null else activityStack[activityStack.lastIndex - 1]
-    }
-
-    /**
-     * 返回底层的 Activity
-     */
-    @Synchronized
-    fun getBottomActivity(): Activity? {
-        return if (isEmpty() || activityStack.size < 1) null else activityStack[0]
-    }
 
     /**
      * 是否存在某一个 Activity

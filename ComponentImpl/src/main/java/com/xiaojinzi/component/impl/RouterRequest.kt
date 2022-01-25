@@ -10,7 +10,7 @@ import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.fragment.app.Fragment
 import com.xiaojinzi.component.Component.requiredConfig
-import com.xiaojinzi.component.ComponentActivityStack.getTopAliveActivity
+import com.xiaojinzi.component.ComponentActivityStack
 import com.xiaojinzi.component.anno.support.CheckClassNameAnno
 import com.xiaojinzi.component.support.*
 import java.util.*
@@ -531,7 +531,7 @@ data class RouterRequest(
             var result = rawActivity
             if (result == null) {
                 // 如果不是为空返回的, 那么必定不是销毁的
-                result = getTopAliveActivity()
+                result = ComponentActivityStack.topAliveActivity
             }
             return result
         }
