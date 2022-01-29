@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.annotation.Keep
+import androidx.annotation.UiContext
 import androidx.annotation.UiThread
 import androidx.fragment.app.Fragment
 import com.xiaojinzi.component.Component.requiredConfig

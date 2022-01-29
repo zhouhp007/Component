@@ -21,25 +21,25 @@ interface IBundleBuilder<T : IBundleBuilder<T>> : DelegateImplCallable<T> {
     fun putCharSequence(key: String, value: CharSequence?): T
     fun putCharSequenceArray(key: String, value: Array<CharSequence>?): T
     fun putCharSequenceArrayList(key: String, value: ArrayList<CharSequence>?): T
-    fun putByte(key: String, value: Byte): T
+    fun putByte(key: String, value: Byte?): T
     fun putByteArray(key: String, value: ByteArray?): T
-    fun putChar(key: String, value: Char): T
+    fun putChar(key: String, value: Char?): T
     fun putCharArray(key: String, value: CharArray?): T
-    fun putBoolean(key: String, value: Boolean): T
+    fun putBoolean(key: String, value: Boolean?): T
     fun putBooleanArray(key: String, value: BooleanArray?): T
     fun putString(key: String, value: String?): T
     fun putStringArray(key: String, value: Array<String>?): T
     fun putStringArrayList(key: String, value: ArrayList<String>?): T
-    fun putShort(key: String, value: Short): T
+    fun putShort(key: String, value: Short?): T
     fun putShortArray(key: String, value: ShortArray?): T
-    fun putInt(key: String, value: Int): T
+    fun putInt(key: String, value: Int?): T
     fun putIntArray(key: String, value: IntArray?): T
     fun putIntegerArrayList(key: String, value: ArrayList<Int>?): T
-    fun putLong(key: String, value: Long): T
+    fun putLong(key: String, value: Long?): T
     fun putLongArray(key: String, value: LongArray?): T
-    fun putFloat(key: String, value: Float): T
+    fun putFloat(key: String, value: Float?): T
     fun putFloatArray(key: String, value: FloatArray?): T
-    fun putDouble(key: String, value: Double): T
+    fun putDouble(key: String, value: Double?): T
     fun putDoubleArray(key: String, value: DoubleArray?): T
     fun putParcelable(key: String, value: Parcelable?): T
     fun putParcelableArray(key: String, value: Array<Parcelable>?): T
@@ -90,8 +90,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putByte(key: String, value: Byte): T {
-        bundle.putByte(key, value)
+    override fun putByte(key: String, value: Byte?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putByte(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -100,8 +104,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putChar(key: String, value: Char): T {
-        bundle.putChar(key, value)
+    override fun putChar(key: String, value: Char?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putChar(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -110,8 +118,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putBoolean(key: String, value: Boolean): T {
-        bundle.putBoolean(key, value)
+    override fun putBoolean(key: String, value: Boolean?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putBoolean(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -135,8 +147,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putShort(key: String, value: Short): T {
-        bundle.putShort(key, value)
+    override fun putShort(key: String, value: Short?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putShort(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -145,8 +161,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putInt(key: String, value: Int): T {
-        bundle.putInt(key, value)
+    override fun putInt(key: String, value: Int?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putInt(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -160,8 +180,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putLong(key: String, value: Long): T {
-        bundle.putLong(key, value)
+    override fun putLong(key: String, value: Long?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putLong(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -170,8 +194,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putFloat(key: String, value: Float): T {
-        bundle.putFloat(key, value)
+    override fun putFloat(key: String, value: Float?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putFloat(key, value)
+        }
         return getRealDelegateImpl()
     }
 
@@ -180,8 +208,12 @@ class IBundleBuilderImpl<T : IBundleBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun putDouble(key: String, value: Double): T {
-        bundle.putDouble(key, value)
+    override fun putDouble(key: String, value: Double?): T {
+        if (value == null) {
+            bundle.remove(key)
+        } else {
+            bundle.putDouble(key, value)
+        }
         return getRealDelegateImpl()
     }
 
