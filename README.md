@@ -1,7 +1,7 @@
 # 2.x 之后的更新方向
 
 Component 2.x 会全部使用 Kotlin, 并且注解驱动器使用 ksp 开发. 工作量巨大. 所以正式的 2.x 版本会在很久之后
-1.9.x 还是会日常维护 bug 的, 还请放心. 
+1.9.x 还是会日常维护 bug 的, 还请放心. 尝鲜的可以使用过 2.x, 追求稳定的请使用 1.9.x
 
 **`Component` 一定以最快的速度解决您的 `issue`, 提供解决方案.**
 
@@ -34,13 +34,15 @@ Component 2.x 会全部使用 Kotlin, 并且注解驱动器使用 ksp 开发. �
     <img height=22 src="https://xiaojinzi.oss-cn-shanghai.aliyuncs.com/blogImages/fluidicon.png" />
 </a>
 
-## 1. Demo体验
+## 1. Demo 体验和成品 App 
 
-扫码或者点击图片即可下载
+扫码下载组件化 Demo. 或者点击链接去体验一个开源的成品 App, 是个记账 App
+
+[https://github.com/xiaojinzi123/TallyApp](https://github.com/xiaojinzi123/TallyApp)
 
 <a href="https://github.com/xiaojinzi123/Component/releases/download/v1.7.6.1/app-release.apk">
     <img height=180 src="./imgs/demoApk.png" />
-</a>
+</a><img src="https://s2.loli.net/2022/03/02/W4nHp7FIiq8xAeP.png" style="zoom:50%;" />
 
 ## 2. Hello World 文档
 

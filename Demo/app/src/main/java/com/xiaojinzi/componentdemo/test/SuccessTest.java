@@ -1,17 +1,16 @@
 package com.xiaojinzi.componentdemo.test;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 
 import com.xiaojinzi.base.ModuleConfig;
 import com.xiaojinzi.component.error.ignore.NavigationFailException;
 import com.xiaojinzi.component.impl.Router;
 import com.xiaojinzi.component.impl.RouterErrorResult;
 import com.xiaojinzi.component.impl.RouterInterceptor;
-import com.xiaojinzi.component.impl.RouterRequest;
 import com.xiaojinzi.component.impl.RouterResult;
 import com.xiaojinzi.component.impl.RxRouter;
 import com.xiaojinzi.component.impl.URIBuilder;
@@ -529,10 +528,10 @@ public class SuccessTest implements TestExecutor {
                 .putInt("valueIntDefalut", 1)
                 .putInt("valueIntBox", 1)
                 .putInt("valueIntBoxDefalut", 1)
-                .putLong("valueLong", 1)
-                .putLong("valueLongDefalut", 1)
-                .putLong("valueLongBox", 1)
-                .putLong("valueLongBoxDefalut", 1)
+                .putLong("valueLong", 1L)
+                .putLong("valueLongDefalut", 1L)
+                .putLong("valueLongBox", 1L)
+                .putLong("valueLongBoxDefalut", 1L)
                 .putBoolean("valueBoolean", true)
                 .putBoolean("valueBooleanDefalut", false)
                 .putBoolean("valueBooleanBox", true)
