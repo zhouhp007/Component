@@ -54,6 +54,7 @@ public class TestRouterAct extends BaseAct {
 
     @RouterAnno(
             path = ModuleConfig.App.TEST_ROUTER,
+            interceptors = {TestInterceptor1.class, TestInterceptor2.class},
             desc = "测试跳转的界面"
     )
     public static Intent startActivity(@NonNull RouterRequest request) {
