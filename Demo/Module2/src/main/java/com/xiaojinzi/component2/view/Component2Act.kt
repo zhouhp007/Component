@@ -1,9 +1,9 @@
 package com.xiaojinzi.component2.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Parcelable
 import android.util.SparseArray
+import android.widget.TextView
 import com.xiaojinzi.base.ModuleConfig
 import com.xiaojinzi.base.bean.SubParcelable
 import com.xiaojinzi.base.bean.User
@@ -18,8 +18,6 @@ import com.xiaojinzi.component.anno.ServiceAutowiredAnno
 import com.xiaojinzi.component.forward
 import com.xiaojinzi.component.impl.Router
 import com.xiaojinzi.component2.R
-import kotlinx.android.synthetic.main.component2_act.*
-import java.util.*
 
 @RouterAnno(
         path = ModuleConfig.Module2.MAIN,
@@ -155,7 +153,7 @@ class Component2Act : BaseAct() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.component2_act)
         Component.inject(this);
-        tv_data.text = data
+        findViewById<TextView>(R.id.tv_data).text = data
 
         val fragment = Router
                 .with(ModuleConfig.Module1.TEST_FRAGMENT)

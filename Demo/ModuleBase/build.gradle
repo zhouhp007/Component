@@ -41,6 +41,7 @@ dependencies {
 
     api libs.appcompat
     api libs.constraintLayout
+    api libs.support_ktx
     api libs.rxjava
     api libs.rxandroid
     api libs.gson

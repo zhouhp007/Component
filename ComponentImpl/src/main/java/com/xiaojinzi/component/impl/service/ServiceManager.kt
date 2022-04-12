@@ -116,7 +116,7 @@ object ServiceManager {
                 map = HashMap()
                 serviceDecoratorMap[tClass] = map
             }
-            if (serviceDecoratorMap.containsKey(uid)) {
+            if (map.containsKey(uid)) {
                 throw RuntimeException(tClass.simpleName + " the key of '" + uid + "' is exist")
             }
             map.put(uid, callable)
