@@ -29,7 +29,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         if (rootProject.ext.isDependMavenOnline) {
             classpath "com.github.xiaojinzi123.Component:component-plugin:${versions.component_version}-androidx-java8"
-        }else {
+        } else {
             classpath "com.xiaojinzi.component:component-plugin:${versions.component_version}"
         }
     }
