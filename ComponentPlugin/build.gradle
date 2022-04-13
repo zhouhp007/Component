@@ -1,7 +1,10 @@
 apply plugin: 'groovy'
 apply plugin: 'maven-publish'
 
-// https://docs.gradle.org/7.0/dsl/org.gradle.api.publish.maven.MavenPublication.html
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
 
 dependencies {
     implementation gradleApi()
@@ -10,6 +13,7 @@ dependencies {
     implementation 'com.android.tools.build:gradle:3.3.0'
     implementation 'com.google.code.gson:gson:2.9.0'
 }
+
 repositories {
     mavenCentral()
 }
@@ -17,14 +21,30 @@ repositories {
 sourceCompatibility = "8"
 targetCompatibility = "8"
 
-group='com.xiaojinzi.component'
-version="${versions.component_plugin_upload_version}"
-archivesBaseName='component-plugin'
+group = 'com.xiaojinzi.component'
+version = "${versions.component_plugin_upload_version}"
+archivesBaseName = 'component-plugin'
 
-publishToMavenLocal{
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = archivesBaseName
+            version = version
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "$rootDir/RepoComponent"
+        }
+    }
+}
+
+/*publishToMavenLocal{
     repositories {
         mavenDeployer{
             repository(url: uri('../RepoComponent'))
         }
     }
-}
+}*/
