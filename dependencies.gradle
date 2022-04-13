@@ -25,8 +25,6 @@ ext.libs = [
         appcompat           : "androidx.appcompat:appcompat:${versions.appcompat}",
         constraintLayout    : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
 
-        support_ktx         : "com.github.xiaojinzi123.AndroidSupport:lib-ktx:v1.0-beta57",
-
         component_annotation: "com.github.xiaojinzi123.Component:component-annotation:${versions.component_version}-androidx-java8",
         component_compiler  : "com.github.xiaojinzi123.Component:component-compiler:${versions.component_version}-androidx-java8",
         component_impl      : "com.github.xiaojinzi123.Component:component-impl:${versions.component_version}-androidx-java8",
