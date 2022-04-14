@@ -1,7 +1,7 @@
 apply plugin: 'java-library'
+apply plugin: 'maven-publish'
 
 group = 'com.github.xiaojinzi123'
-
 archivesBaseName = "component-annotation"
 
 dependencies {
@@ -11,6 +11,18 @@ dependencies {
 sourceCompatibility = "8"
 targetCompatibility = "8"
 
-repositories {
-    mavenCentral()
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId archivesBaseName
+            version project.version
+            from components.java
+        }
+    }
 }
