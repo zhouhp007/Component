@@ -1,7 +1,7 @@
 apply plugin: 'java-library'
+apply plugin: 'maven-publish'
 
 group = 'com.github.xiaojinzi123'
-
 archivesBaseName = "component-compiler"
 
 dependencies {
@@ -10,6 +10,11 @@ dependencies {
 
 sourceCompatibility = "8"
 targetCompatibility = "8"
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
 dependencies {
     implementation 'com.google.auto.service:auto-service:1.0.1'
@@ -24,6 +29,13 @@ dependencies {
     }
 }
 
-repositories {
-    mavenCentral()
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId archivesBaseName
+            version project.version
+            from components.java
+        }
+    }
 }
