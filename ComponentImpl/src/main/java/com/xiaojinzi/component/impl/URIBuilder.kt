@@ -105,7 +105,6 @@ IURIBuilderImpl<T : IURIBuilder<T>>(
     }
 
     override fun path(path: String?): T {
-        Utils.checkStringNullPointer(path, "path")
         this.path = path
         return getRealDelegateImpl()
     }
