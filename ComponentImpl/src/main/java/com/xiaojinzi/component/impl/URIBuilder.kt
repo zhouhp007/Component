@@ -14,8 +14,8 @@ interface IURIBuilder<T : IURIBuilder<T>> : DelegateImplCallable<T> {
     fun scheme(scheme: String): T
     fun hostAndPath(hostAndPath: String): T
     fun userInfo(userInfo: String): T
-    fun host(host: String): T
-    fun path(path: String): T
+    fun host(host: String?): T
+    fun path(path: String?): T
     fun query(queryName: String, queryValue: String): T
     fun query(queryName: String, queryValue: Boolean): T
     fun query(queryName: String, queryValue: Byte): T
@@ -99,13 +99,12 @@ IURIBuilderImpl<T : IURIBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun host(host: String): T {
-        Utils.checkStringNullPointer(host, "host")
+    override fun host(host: String?): T {
         this.host = host
         return getRealDelegateImpl()
     }
 
-    override fun path(path: String): T {
+    override fun path(path: String?): T {
         Utils.checkStringNullPointer(path, "path")
         this.path = path
         return getRealDelegateImpl()

@@ -542,8 +542,8 @@ data class RouterRequest(
      * 因为 uri 转化为了 scheme,host,path,queryMap 那么这时候就不需要 url 了
      */
     fun toBuilder(): RouterRequestBuilder {
-        val builder = RouterRequestBuilder()
 
+        val builder = RouterRequestBuilder()
 
         // 有关界面的两个
         builder.context(context = context)
@@ -551,8 +551,8 @@ data class RouterRequest(
 
         // 还原一个 Uri 为各个零散的参数
         builder.scheme(scheme = uri.scheme!!)
-        builder.host(host = uri.host!!)
-        builder.path(path = uri.path!!)
+        builder.host(host = uri.host)
+        builder.path(path = uri.path)
         val queryParameterNames = uri.queryParameterNames
         if (queryParameterNames != null) {
             for (queryParameterName in queryParameterNames) {
