@@ -1,0 +1,83 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.xiaojinzi.component",
+    "module": "component-plugin",
+    "version": "2.0.0-beta10",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "component-plugin-2.0.0-beta10.jar",
+          "url": "component-plugin-2.0.0-beta10.jar",
+          "size": 25196,
+          "sha512": "2fe96ead30dfe22bcb44f60e5b8b7412d1956cddec5b322f6b2f7ce53fec9a9c7adf00bc88b4416a689805706d69b5509956bcc498b94541bd97cb6a0b020ad6",
+          "sha256": "a37028849d46a72a7117df847da1dab8b30b81c35318073dfa6d4bc4ddaaa20f",
+          "sha1": "a1bf2d010c3fa1388b16eaf37b436b6f117c58c9",
+          "md5": "ed9da4d13f227e436518e27cf4aa8647"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-all",
+          "version": {
+            "requires": "5.2"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "3.3.0"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.9.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "component-plugin-2.0.0-beta10.jar",
+          "url": "component-plugin-2.0.0-beta10.jar",
+          "size": 25196,
+          "sha512": "2fe96ead30dfe22bcb44f60e5b8b7412d1956cddec5b322f6b2f7ce53fec9a9c7adf00bc88b4416a689805706d69b5509956bcc498b94541bd97cb6a0b020ad6",
+          "sha256": "a37028849d46a72a7117df847da1dab8b30b81c35318073dfa6d4bc4ddaaa20f",
+          "sha1": "a1bf2d010c3fa1388b16eaf37b436b6f117c58c9",
+          "md5": "ed9da4d13f227e436518e27cf4aa8647"
+        }
+      ]
+    }
+  ]
+}
