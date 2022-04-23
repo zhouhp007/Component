@@ -550,7 +550,7 @@ data class RouterRequest(
         builder.fragment(fragment = fragment)
 
         // 还原一个 Uri 为各个零散的参数
-        /*builder.scheme(scheme = uri.scheme!!)
+        builder.scheme(scheme = uri.scheme!!)
         builder.host(host = uri.host)
         builder.path(path = uri.path)
 
@@ -559,10 +559,10 @@ data class RouterRequest(
             for (queryParameterName in queryParameterNames) {
                 builder.query(queryName = queryParameterName, queryValue = uri.getQueryParameter(queryParameterName)!!)
             }
-        }*/
+        }
 
         // 不能拆分每个参数, 因为可能 url 中可能没有 path 参数
-        builder.url(url = uri.toString())
+        // builder.url(url = uri.toString())
 
         builder.bundle.putAll(bundle)
         builder.requestCode(requestCode = requestCode)

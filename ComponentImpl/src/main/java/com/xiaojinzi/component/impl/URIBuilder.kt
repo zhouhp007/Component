@@ -162,12 +162,15 @@ IURIBuilderImpl<T : IURIBuilder<T>>(
             uriBuilder
                     .scheme(if (TextUtils.isEmpty(builder.scheme)) Component.requiredConfig().defaultScheme else builder.scheme) // host 一定不能为空
                     .encodedAuthority(authoritySB.toString())
-                    .path(
+                    /*.path(
                             Utils.checkStringNullPointer(
                                     builder.path, "path",
                                     "do you forget call path() to set path?"
                             )
-                    )
+                    )*/
+            if (builder.path.isNullOrEmpty().not()) {
+                uriBuilder.path(builder.path)
+            }
             for ((key, value) in builder.queryMap) {
                 uriBuilder.appendQueryParameter(key, value)
             }
