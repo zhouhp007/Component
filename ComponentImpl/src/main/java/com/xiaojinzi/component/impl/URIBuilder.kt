@@ -13,7 +13,7 @@ interface IURIBuilder<T : IURIBuilder<T>> : DelegateImplCallable<T> {
     fun url(url: String): T
     fun scheme(scheme: String): T
     fun hostAndPath(hostAndPath: String): T
-    fun userInfo(userInfo: String): T
+    fun userInfo(userInfo: String?): T
     fun host(host: String?): T
     fun path(path: String?): T
     fun query(queryName: String, queryValue: String): T
@@ -93,8 +93,7 @@ IURIBuilderImpl<T : IURIBuilder<T>>(
         return getRealDelegateImpl()
     }
 
-    override fun userInfo(userInfo: String): T {
-        Utils.checkStringNullPointer(userInfo, "userInfo")
+    override fun userInfo(userInfo: String?): T {
         this.userInfo = userInfo
         return getRealDelegateImpl()
     }

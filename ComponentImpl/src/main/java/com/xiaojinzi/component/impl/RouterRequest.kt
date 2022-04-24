@@ -344,14 +344,21 @@ class RouterRequestBuilder(
 @Keep
 @CheckClassNameAnno
 data class RouterRequest(
+
         val context: Context?,
         val fragment: Fragment?,
+
         /**
          * 这是一个很重要的参数, 一定不可以为空,如果这个为空了,一定不能继续下去,因为很多地方直接使用这个参数的,不做空判断的
          * 而且这个参数不可以为空的
          */
         val uri: Uri,
+
+        /**
+         * 请求码
+         */
         val requestCode: Int? = null,
+
         /**
          * 框架是否帮助用户跳转拿 [com.xiaojinzi.component.bean.ActivityResult]
          * 有 requestCode 只能说明用户使用了某一个 requestCode,
@@ -551,6 +558,7 @@ data class RouterRequest(
 
         // 还原一个 Uri 为各个零散的参数
         builder.scheme(scheme = uri.scheme!!)
+        builder.userInfo(userInfo = uri.userInfo)
         builder.host(host = uri.host)
         builder.path(path = uri.path)
 
