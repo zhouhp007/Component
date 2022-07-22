@@ -30,7 +30,6 @@ interface IComponentRouter {
     /**
      * Note: 不对外公开使用！
      *
-     *
      * 是否有匹配的 uri
      * 此方法仅供框架内部使用, 请勿在自己项目中根据此 Api 来判断一个 [Uri] 是否有匹配的路由目标
      * 原因如下：

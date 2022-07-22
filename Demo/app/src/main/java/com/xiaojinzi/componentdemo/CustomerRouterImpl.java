@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.text.TextUtils;
 
 import com.xiaojinzi.base.InterceptorConfig;
@@ -23,6 +25,17 @@ import java.lang.reflect.Proxy;
  * 自定义路由实现的范例
  */
 public class CustomerRouterImpl {
+
+    @RouterAnno(
+            regex = "^(http|https)(.*)",
+            desc = "系统浏览器"
+    )
+    public static Intent systemBrowser(RouterRequest request) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(request.getUri());
+        return intent;
+    }
 
     /**
      * 自定义实现跳转到打电话的界面,并且自动完成打电话权限的申请
