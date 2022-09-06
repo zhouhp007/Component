@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.xiaojinzi.module1run'
     compileSdkVersion versions.android_compile_sdk
     defaultConfig {
         applicationId "com.xiaojinzi.componentdemo"
@@ -37,7 +38,6 @@ android {
                                 '--set-max-idx-number=48000']
         //控制dex包内的方法数上限
     }
-
 }
 
 dependencies {

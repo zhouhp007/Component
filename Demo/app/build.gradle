@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+    namespace 'com.xiaojinzi.componentdemo'
     compileSdkVersion versions.android_compile_sdk
     defaultConfig {
         applicationId "com.xiaojinzi.componentdemo"
@@ -55,7 +56,6 @@ android {
                                 '--set-max-idx-number=48000']
         //控制dex包内的方法数上限
     }
-
 }
 
 dependencies {

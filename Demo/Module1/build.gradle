@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.xiaojinzi.component1'
     compileSdkVersion versions.android_compile_sdk
     defaultConfig {
         minSdkVersion versions.android_min_sdk
