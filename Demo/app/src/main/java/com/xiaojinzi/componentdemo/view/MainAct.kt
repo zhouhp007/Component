@@ -216,6 +216,14 @@ class MainAct : AppCompatActivity() {
             .forward()
     }
 
+    fun testRepeatRequestCode(view: View?) {
+        Router
+            .with(this)
+            .host(ModuleConfig.App.NAME)
+            .path(ModuleConfig.App.TEST_REPEAT_REQUEST_CODE)
+            .forward()
+    }
+
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library

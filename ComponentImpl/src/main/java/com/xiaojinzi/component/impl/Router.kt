@@ -135,7 +135,7 @@ object Router {
     fun <T> withApi(@NonNull apiClass: Class<T>): T {
         var t: T? = ClassCache.get(apiClass) as? T
         if (t == null) {
-            val className: String  = ComponentUtil.genRouterApiImplClassName(apiClass)
+            val className: String = ComponentUtil.genRouterApiImplClassName(apiClass)
             try {
                 t = Class.forName(className).newInstance() as T
                 ClassCache.put(apiClass, t)
@@ -159,18 +159,19 @@ object Router {
 
     /**
      * 取消某一个 Activity的有关的路由任务
+     * 并且解除和这个 Activity 有关的 RequestCode
      *
      * @param act 要取消的 [Activity]
      */
     @UiThread
     @JvmStatic
-    open fun cancel(act: Activity) {
+    fun cancel(act: Activity) {
         Utils.checkMainThread()
         synchronized(mNavigationDisposableList) {
             for (i in mNavigationDisposableList.indices.reversed()) {
                 val disposable =
                     mNavigationDisposableList[i]
-                if (act === Utils.getActivityFromContext(disposable.originalRequest()!!.context)) {
+                if (act === Utils.getActivityFromContext(context = disposable.originalRequest()!!.context)) {
                     disposable.cancel()
                     mNavigationDisposableList.removeAt(i)
                 }

@@ -35,6 +35,7 @@
         <activity android:name=".view.TestServiceAct" />
         <activity android:name=".view.TestRouterAct" />
         <activity android:name=".view.TestFragmentRouterAct" />
+        <activity android:name=".view.TestRepeatRequestCodeAct" />
         <activity
             android:name=".view.MainAct"
             android:launchMode="singleInstance"

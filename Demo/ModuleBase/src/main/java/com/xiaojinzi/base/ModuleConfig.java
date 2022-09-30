@@ -46,6 +46,9 @@ public class ModuleConfig {
         // 显示一个信息的界面
         public static final String INFO = "info";
 
+        // 测试重复的 requestCode
+        public static final String TEST_REPEAT_REQUEST_CODE = "TestRepeatRequestCode";
+
         public static final String NOT_FOUND_TEST = "notFountTest";
         
     }

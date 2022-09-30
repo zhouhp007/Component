@@ -20,7 +20,7 @@ internal class ComponentLifecycleCallback : ActivityLifecycleCallbacks {
         object : FragmentManager.FragmentLifecycleCallbacks() {
             override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
                 super.onFragmentDestroyed(fm, f)
-                Router.cancel(f)
+                Router.cancel(fragment = f)
             }
         }
 
@@ -57,8 +57,8 @@ internal class ComponentLifecycleCallback : ActivityLifecycleCallbacks {
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        removeActivity(activity)
-        Router.cancel(activity)
+        removeActivity(activity = activity)
+        Router.cancel(act = activity)
     }
 
 }

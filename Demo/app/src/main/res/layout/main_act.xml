@@ -132,6 +132,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="testRepeatRequestCode"
+            android:text="测试重复 RequestCode 在不同的 Activity"
+            android:textSize="10dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="testQuality"
             android:text="测试代码质量(每次发布这里面的每一项都要通过)"
             android:textSize="10dp" />
