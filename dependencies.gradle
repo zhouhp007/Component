@@ -1,12 +1,12 @@
 ext.versions = [
         // 系统级别的版本号
-        android_compile_sdk                 : 31,
+        android_compile_sdk                 : 32,
         android_min_sdk                     : 21,
-        android_target_sdk                  : 31,
+        android_target_sdk                  : 32,
         version_code                        : 1000,
         version_name                        : "1.0",
         // 第三方控件的版本号
-        appcompat                           : "1.4.2",
+        appcompat                           : "1.5.1",
         constraintLayout                    : '2.0.4',
         rxjava                              : '2.2.21',
         rxandroid                           : "2.1.1",
