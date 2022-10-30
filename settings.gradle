@@ -12,3 +12,4 @@ include ':Demo',
         ':Demo:Module2',
         ':Demo:ModuleUser',
         ':Demo:ModuleBase'
+include ':ComponentCompilerKotlin'
