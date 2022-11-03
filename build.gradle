@@ -7,7 +7,7 @@ buildscript {
     apply from: "dependencies.gradle"
 
     ext.component_group_id = "com.xiaojinzi"
-    ext.isDependMavenOnline = false
+    ext.isDependMavenOnline = true
     // ext.component_asm_util_class_output_path = "./Temp/ASMUtil.class"
     ext.component_asm_disable = false
     // 注解生成器生成的文件 json 信息都
@@ -25,11 +25,11 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         if (rootProject.ext.isDependMavenOnline) {
-            classpath "com.github.xiaojinzi123.Component:component-plugin:${versions.component_version}-androidx-java8"
+            classpath "com.github.xiaojinzi123.Component:component-plugin:${versions.component_version}"
         } else {
             classpath "com.xiaojinzi.component:component-plugin:${versions.component_version}"
         }
@@ -39,17 +39,6 @@ buildscript {
 plugins {
     id 'org.jetbrains.kotlin.jvm' version "$kotlin_version" apply false
 }
-
-allprojects {
-    repositories {
-        // 公司私有的maven服务器
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir
