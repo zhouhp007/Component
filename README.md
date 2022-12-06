@@ -1,7 +1,6 @@
-# 2.x 之后的更新方向
-
-Component 2.x 会全部使用 Kotlin, 并且注解驱动器使用 ksp 开发. 工作量巨大. 所以正式的 2.x 版本会在很久之后
-1.9.x 还是会日常维护 bug 的, 还请放心. 尝鲜的可以使用过 2.x, 追求稳定的请使用 1.9.x
+# ksp 纯 Kotlin 的版本
+2.x 纯 Kotlin 开发已经完成了. 由于文档啥的不想对老的进行更改. 所以新创建了一个仓库：[KComponent](https://github.com/xiaojinzi123/KComponent)
+如果你的项目是纯 Kotlin 项目. 还请移步 [KComponent](https://github.com/xiaojinzi123/KComponent)
 
 **`Component` 一定以最快的速度解决您的 `issue`, 提供解决方案.**
 
