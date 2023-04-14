@@ -16,17 +16,16 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
         if (!rootProject.ext.isDependMavenOnline) {
             maven {
                 url './RepoComponent'
             }
         }
         maven { url 'https://jitpack.io' }
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
-        classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"
+        classpath 'com.android.tools.build:gradle:3.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         if (rootProject.ext.isDependMavenOnline) {
             classpath "com.github.xiaojinzi123.Component:component-plugin:${versions.component_version}-androidx-java8"
@@ -40,8 +39,8 @@ allprojects {
     repositories {
         // 公司私有的maven服务器
         google()
-        jcenter()
         maven { url 'https://jitpack.io' }
+        jcenter()
     }
 }
 
