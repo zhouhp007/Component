@@ -46,3 +46,19 @@ task androidSourcesJar(type: Jar) {
 artifacts {
     archives androidSourcesJar
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                for (component in components) {
+                    if("release" == component.name) {
+                        from component
+                    }
+                }
+                groupId = group
+                artifactId = archivesBaseName
+            }
+        }
+    }
+}

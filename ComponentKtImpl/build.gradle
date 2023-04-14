@@ -32,3 +32,19 @@ dependencies {
         api project(':ComponentImpl')
     }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                for (component in components) {
+                    if("release" == component.name) {
+                        from component
+                    }
+                }
+                groupId = group
+                artifactId = archivesBaseName
+            }
+        }
+    }
+}
