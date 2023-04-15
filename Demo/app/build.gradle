@@ -62,11 +62,8 @@ dependencies {
     api project(':Demo:ModuleHelp')
     api project(':Demo:ModuleUser')
 
-    if (rootProject.ext.isDependMavenOnline) {
-        kapt androidxLibs.component_compiler
-    } else {
-        kapt project(':ComponentCompiler')
-    }
+    kapt project(':ComponentCompiler')
+
     // 内存检测的
     // debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
 
