@@ -51,11 +51,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                for (component in components) {
-                    if("release" == component.name) {
-                        from component
-                    }
-                }
+                from components.release
                 groupId = group
                 artifactId = archivesBaseName
             }

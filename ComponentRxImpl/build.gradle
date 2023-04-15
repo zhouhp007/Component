@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 group = 'com.github.xiaojinzi123'
@@ -50,11 +51,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                for (component in components) {
-                    if("release" == component.name) {
-                        from component
-                    }
-                }
+                from components.release
                 groupId = group
                 artifactId = archivesBaseName
             }
