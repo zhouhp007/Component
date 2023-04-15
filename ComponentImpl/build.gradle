@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 group = 'com.github.xiaojinzi123'
@@ -51,7 +50,7 @@ artifacts {
 afterEvaluate {
     publishing {
         publications {
-            maven(MavenPublication) {
+            release(MavenPublication) {
                 for (component in components) {
                     if("release" == component.name) {
                         from component
