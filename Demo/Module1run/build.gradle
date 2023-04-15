@@ -46,11 +46,7 @@ dependencies {
     api project(':Demo:Module1')
     api project(':Demo:ModuleBase')
 
-    if (rootProject.ext.isDependMavenOnline) {
-        annotationProcessor androidxLibs.component_compiler
-    } else {
-        annotationProcessor project(':ComponentCompiler')
-    }
+    annotationProcessor project(':ComponentCompiler')
 
 }
 
