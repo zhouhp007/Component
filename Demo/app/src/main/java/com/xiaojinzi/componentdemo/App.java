@@ -49,13 +49,13 @@ public class App extends MultiDexApplication {
         RxErrorIgnoreUtil.ignoreError();
 
         // 手动加载
-        ModuleManager.getInstance().registerArr(
+        /*ModuleManager.getInstance().registerArr(
                 ModuleConfig.App.NAME,
                 ModuleConfig.User.NAME,
                 ModuleConfig.Help.NAME,
                 ModuleConfig.Module1.NAME,
                 ModuleConfig.Module2.NAME
-        );
+        );*/
 
     }
 
