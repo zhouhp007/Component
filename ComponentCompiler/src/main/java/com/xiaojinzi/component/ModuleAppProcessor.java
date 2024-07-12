@@ -5,7 +5,6 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.xiaojinzi.component.anno.ModuleAppAnno;
@@ -65,7 +64,7 @@ public class ModuleAppProcessor extends BaseHostProcessor {
         centerServiceTypeElement = mElements.getTypeElement(ComponentConstants.CENTERSERVICE_CLASS_NAME);
         routerCenterTypeElement = mElements.getTypeElement(ComponentConstants.ROUTERCENTER_CLASS_NAME);
         classCacheTypeElement = mElements.getTypeElement(ComponentConstants.CLASSCACHE_CLASS_NAME);
-        createImpl(true);
+        // createImpl(true);
     }
 
     @Override
@@ -139,17 +138,23 @@ public class ModuleAppProcessor extends BaseHostProcessor {
                 .addMethod(initMapMethod)
                 .addJavadoc(classJavaDoc)
                 .build();
+
+        if (mFiler == null) {
+            throw new ProcessException("mFiler is null");
+        }
+
         try {
-            JavaFile
+            JavaFile javaFile = JavaFile
                     .builder(pkg, typeSpec)
                     .indent("    ")
-                    .build()
-                    .writeTo(mFiler);
+                    .build();
+            javaFile.writeTo(mFiler);
         } catch (IOException e) {
             throw new ProcessException(e);
         } catch (Exception e) {
             // ignore
         }
+
     }
 
     private MethodSpec generateInitMapMethod() {
