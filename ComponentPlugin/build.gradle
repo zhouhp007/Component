@@ -30,7 +30,14 @@ version = "${versions.component_plugin_upload_version}"
         ]
     }
 }*/
-
+gradlePlugin {
+    plugins {
+        component {
+            id = 'com.xiaojinzi.component.plugin'
+            implementationClass = 'com.xiaojinzi.component.plugin.ComponentPlugin'
+        }
+    }
+}
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
